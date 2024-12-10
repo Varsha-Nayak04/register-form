@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const resultDiv = document.getElementById("result");
 
     form.addEventListener("submit", function (event) {
-        event.preventDefault(); // Prevent form from submitting normally
+        event.preventDefault(); // Prevent form submission to server
 
         // Get form data
         const name = document.getElementById("name").value;
