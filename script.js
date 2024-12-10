@@ -1,28 +1,27 @@
-$(document).ready(function() {
-    // Handle form submission
-    $("#registrationForm").submit(function(event) {
-        event.preventDefault();  // Prevent form from submitting normally
+document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("registrationForm");
+    const resultDiv = document.getElementById("result");
+
+    form.addEventListener("submit", function (event) {
+        event.preventDefault(); // Prevent form from submitting normally
 
         // Get form data
-        var name = $("#name").val();
-        var email = $("#email").val();
-        var phone = $("#phone").val();
-        var address = $("#address").val();
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+        const phone = document.getElementById("phone").value;
+        const address = document.getElementById("address").value;
 
-        // Send data via AJAX to the PHP script
-        $.ajax({
-            url: "submit.php",
-            method: "POST",
-            data: {
-                name: name,
-                email: email,
-                phone: phone,
-                address: address
-            },
-            success: function(response) {
-                // Display the response (success message)
-                $("#result").html(response);
-            }
-        });
+        // Display the submitted data
+        const resultHTML = `
+            <h2>Registration Successful!</h2>
+            <p><strong>Name:</strong> ${name}</p>
+            <p><strong>Email:</strong> ${email}</p>
+            <p><strong>Phone:</strong> ${phone}</p>
+            <p><strong>Address:</strong> ${address}</p>
+        `;
+        resultDiv.innerHTML = resultHTML;
+
+        // Clear the form
+        form.reset();
     });
 });
